@@ -14,15 +14,19 @@ import { MyDialogComponent } from './my-dialog/my-dialog.component';
 import { MatDialogModule } from '@angular/material';
 import { DialogDemoComponent } from './dialog-demo/dialog-demo.component';
 import { MatCardModule } from '@angular/material';
+import {MatTabsModule} from '@angular/material/tabs';
+
 
 import { MyFormComponent } from './my-form/my-form.component';
+import { QueryComponent } from './query/query.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MyFormComponent,
     DialogDemoComponent,
-    MyDialogComponent
+    MyDialogComponent,
+    QueryComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,8 @@ import { MyFormComponent } from './my-form/my-form.component';
     MatButtonModule,
     MatDialogModule,
     FormsModule,
-    MatCardModule
+    MatCardModule,
+    MatTabsModule
   ],
   entryComponents: [
     MyDialogComponent
