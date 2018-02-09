@@ -1,4 +1,57 @@
 <h3>Address Form</h3>
 <!-- <my-form></my-form> -->
-<app-dialog-demo></app-dialog-demo>
-<app-query></app-query>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+<!-- <link rel="stylesheet" href="dist/themes/default/style.min.css" /> -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+
+ <app-search></app-search>
+<!-- <app-dialog-demo></app-dialog-demo>
+<app-query></app-query>  -->
+
+<mat-card>
+    <meta charset="utf-8" />
+    <title>Simple jsTree</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var jsondata = [
+                           { "id": "ajson1", "parent": "#", "text": "Simple root node" },
+                           { "id": "ajson2", "parent": "#", "text": "Root node 2" },
+                           { "id": "ajson3", "parent": "ajson2", "text": "Child 1" },
+                           { "id": "ajson4", "parent": "ajson2", "text": "Child 2" },
+            ];
+
+            createJSTree(jsondata);
+        });
+
+        function createJSTree(jsondata) {
+            $('#SimpleJSTree').jstree({
+                "core": {                    
+                    'data': jsondata
+                },
+                "plugins": ["search"],
+                "search": {
+                    "case_sensitive": false,
+                    "show_only_matches": true
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            $(".search-input").keyup(function () {
+                var searchString = $(this).val();
+                $('#SimpleJSTree').jstree('search', searchString);
+            });
+        });
+        
+    </script>
+
+ 
+    <input id="search-input" class="search-input" />
+    <br />
+    <div id="#SimpleJSTree"></div>
+
+    </mat-card>

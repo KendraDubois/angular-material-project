@@ -19,6 +19,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 
 import { MyFormComponent } from './my-form/my-form.component';
 import { QueryComponent } from './query/query.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { QueryComponent } from './query/query.component';
     MyFormComponent,
     DialogDemoComponent,
     MyDialogComponent,
-    QueryComponent
+    QueryComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
