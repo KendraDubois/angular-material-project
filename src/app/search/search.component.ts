@@ -9,6 +9,7 @@ declare var $: any;
 })
 export class SearchComponent implements OnInit {
 
+
     constructor() { }
 
     ngOnInit() {
@@ -36,10 +37,49 @@ export class SearchComponent implements OnInit {
             });
         }
 
+        
+
+
         $('#SimpleJSTree')
             .on('changed.jstree', function (e, data) {
                 var objNode = data.instance.get_node(data.selected);
-                console.log(objNode);
+                console.log(objNode.text);
+                //console.log(objNode.node.id);
+                var objName = objNode.text;
+                console.log(objName);
+
+                // Get modal element
+                var modal = document.getElementById('simpleModal');
+                // Get open modal button
+                var modalBtn = document.getElementById('modalBtn');
+                // Get close button
+                var closeBtn = document.getElementsByClassName('closeBtn')[0];
+
+                // Listen for open click
+                //modalBtn.addEventListener('click', openModal);
+                // Listen for close click
+                closeBtn.addEventListener('click', closeModal);
+                // Listen for click outside of modal
+                window.addEventListener('click', outsideClick);
+
+                //Open model and block background
+                modal.style.display = 'block';
+
+                // Function to close modal
+                function closeModal() {
+                    modal.style.display = 'none';
+                }
+
+                // Function to close modal if outside click
+                //Pass in event (click information)
+                function outsideClick(e) {
+                    if (e.target == modal) {
+                        //if the event, was outside the modal...
+                        //close the modal/do not display the modal
+                        modal.style.display = 'none';
+                    }
+                }
+
                 $('#jstree-result').html('Selected: <br/><strong>' + objNode.id + '-' + objNode.text + '</strong>');
 
             });
@@ -50,7 +90,47 @@ export class SearchComponent implements OnInit {
             });
         });
     }
+
 }
+
+// Wait for DOM to be ready
+$(document).ready(function () {
+    // // Get modal element
+    // var modal = document.getElementById('simpleModal');
+    // // Get open modal button
+    // var modalBtn = document.getElementById('modalBtn');
+    // // Get close button
+    // var closeBtn = document.getElementsByClassName('closeBtn')[0];
+
+    // // Listen for open click
+    // modalBtn.addEventListener('click', openModal);
+    // // Listen for close click
+    // closeBtn.addEventListener('click', closeModal);
+    // // Listen for click outside of modal
+    // window.addEventListener('click', outsideClick);
+
+    // // Function to open modal
+    // function openModal() {
+    //     //Open model and block background
+    //     modal.style.display = 'block';
+    // }
+
+    // // Function to close modal
+    // function closeModal() {
+    //     modal.style.display = 'none';
+    // }
+
+    // // Function to close modal if outside click
+    // //Pass in event (click information)
+    // function outsideClick(e) {
+    //     if (e.target == modal) {
+    //         //if the event, was outside the modal...
+    //          //close the modal/do not display the modal
+    //         modal.style.display = 'none';
+    //     }
+    // }
+});
+
 
 // function myFunction()
 // {
